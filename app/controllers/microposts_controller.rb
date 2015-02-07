@@ -1,6 +1,8 @@
 class MicropostsController < ApplicationController
   before_action :set_micropost, only: [:show, :edit, :update, :destroy]
 
+  skip_before_action :authenticate_user!, only: [:index]
+
   # GET /microposts
   # GET /microposts.json
   def index
@@ -14,7 +16,7 @@ class MicropostsController < ApplicationController
 
   # GET /microposts/new
   def new
-    @micropost = Micropost.new{:current_user}
+    @micropost = Micropost.new
   end
 
   # GET /microposts/1/edit
