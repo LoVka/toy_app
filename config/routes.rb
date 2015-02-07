@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :microposts
 
-  resources :users
+  resources :users, only: [:index, :show]
 
   root 'microposts#index'
 
