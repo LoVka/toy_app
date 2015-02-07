@@ -21,6 +21,9 @@ class MicropostsController < ApplicationController
 
   # GET /microposts/1/edit
   def edit
+    if @micropost.user != current_user
+      redirect_to root_path, alert: "Not allowed to edit micropost"
+    end
   end
 
   # POST /microposts
@@ -43,7 +46,7 @@ class MicropostsController < ApplicationController
   # PATCH/PUT /microposts/1.json
   def update
     respond_to do |format|
-      if @micropost.update(micropost_params)
+      if @micropost.user == current_user && @micropost.update(micropost_params)
         format.html { redirect_to @micropost, notice: 'Micropost was successfully updated.' }
         format.json { render :show, status: :ok, location: @micropost }
       else
@@ -56,10 +59,14 @@ class MicropostsController < ApplicationController
   # DELETE /microposts/1
   # DELETE /microposts/1.json
   def destroy
-    @micropost.destroy
-    respond_to do |format|
-      format.html { redirect_to microposts_url, notice: 'Micropost was successfully destroyed.' }
-      format.json { head :no_content }
+    if @micropost.user == current_user
+      @micropost.destroy 
+      respond_to do |format|
+        format.html { redirect_to microposts_url, notice: 'Micropost was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      redirect_to root_path, alert: "Not allowed to delete micropost"
     end
   end
 

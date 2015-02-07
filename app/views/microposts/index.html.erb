@@ -1,5 +1,3 @@
-<!-- <p id="notice"><%= notice %></p>
- -->
 <h1>Listing Microposts</h1>
 
 <table>
@@ -16,9 +14,13 @@
       <tr>
         <td><%= micropost.content %></td>
         <td><%= micropost.user.name %></td>
-        <td><%= link_to 'Show', micropost %></td>
-        <td><%= link_to 'Edit', edit_micropost_path(micropost) %></td>
-        <td><%= link_to 'Destroy', micropost, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if user_signed_in? %>
+          <td><%= link_to 'Show', micropost %></td>
+            <% if micropost.user == current_user %>
+              <td><%= link_to 'Edit', edit_micropost_path(micropost) %></td>
+              <td><%= link_to 'Destroy', micropost, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
