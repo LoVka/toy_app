@@ -85,7 +85,7 @@ Rails.application.configure do
     authentication:       'plain',
     enable_starttls_auto: true  }
   config.action_mailer.default = { from: "alexandr@aejis.eu" }
-  config.action_mailer.default_url_options = { host: 'example.com' }
+  config.action_mailer.default_url_options = { host: 'evening-brushlands-3204.herokuapp.com' }
 
   config.middleware.use ExceptionNotification::Rack,
   :email => {
