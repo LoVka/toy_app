@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :microposts
+
+  concern :paginatable do  
+    get '(page/:page)', :action => :index, :on => :collection, :as => ''
+  end
+
+  resources :microposts, :concerns => :paginatable
 
   resources :users, only: [:index, :show]
 
