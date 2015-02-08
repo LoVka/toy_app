@@ -45,14 +45,18 @@ class MicropostsController < ApplicationController
   # PATCH/PUT /microposts/1
   # PATCH/PUT /microposts/1.json
   def update
-    respond_to do |format|
-      if @micropost.user == current_user && @micropost.update(micropost_params)
-        format.html { redirect_to @micropost, notice: 'Micropost was successfully updated.' }
-        format.json { render :show, status: :ok, location: @micropost }
-      else
-        format.html { render :edit }
-        format.json { render json: @micropost.errors, status: :unprocessable_entity }
+    if @micropost.user == current_user 
+      respond_to do |format|
+        if @micropost.update(micropost_params)
+          format.html { redirect_to @micropost, notice: 'Micropost was successfully updated.' }
+          format.json { render :show, status: :ok, location: @micropost }
+        else
+          format.html { render :edit }
+          format.json { render json: @micropost.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      redirect_to root_path, alert: "Not allowed to update micropost"
     end
   end
 
