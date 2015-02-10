@@ -31,6 +31,7 @@ gem 'exception_notification'
 gem 'devise'
 
 gem 'kaminari'
+gem 'bootstrap-kaminari-views'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
