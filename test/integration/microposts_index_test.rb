@@ -10,7 +10,7 @@ class MicropostsIndexTest < ActionDispatch::IntegrationTest
   test "index including pagination with first 5 elements" do
     get root_path
     assert_template 'microposts/index'
-    assert_select 'nav.pagination'
+    assert_select '.pagination'
     Micropost.order(:id).page(1).each do |mp|
       assert_select 'td', text: mp.content
     end

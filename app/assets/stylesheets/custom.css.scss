@@ -1,7 +1,9 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+""= require devise_bootstrap_views
 
-/* mixins, variables, etc. */
+
+{/* mixins, variables, etc. */}
 
 $light-gray: #777;
 
@@ -159,13 +161,17 @@ aside {
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
-  width: 400px;
   margin-bottom: 15px;
   @include box_sizing;
+  width: 400px;
 }
 
 input {
   height: auto !important;
+}
+
+.field {
+  width: 400px;
 }
 
 #error_explanation {
