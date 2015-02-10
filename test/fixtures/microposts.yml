@@ -5,5 +5,11 @@ one:
   user: one
 
 two:
-  content: MyText
+  content: MyText100
   user: two
+
+<% 30.times do |n| %>
+micropost_<%= n %>:
+  content:  <%= "MyText #{n}" %>
+  user: one
+<% end %>
