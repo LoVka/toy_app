@@ -11,14 +11,14 @@ class MicropostsIndexTest < ActionDispatch::IntegrationTest
     get root_path
     assert_template 'microposts/index'
     assert_select '.pagination'
-    Micropost.order(:id).page(1).each do |mp|
+    Micropost.order(id: :desc).page(1).each do |mp|
       assert_select 'td', text: mp.content
     end
   end
 
   test "index including pagination doesn't have next 5 elements" do
     get root_path
-    Micropost.order(:id).page(2).each do |mp|
+    Micropost.order(id: :desc).page(2).each do |mp|
       assert_select 'td', text: mp.content, count: 0
     end
   end
