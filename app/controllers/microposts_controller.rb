@@ -6,7 +6,11 @@ class MicropostsController < ApplicationController
   # GET /microposts
   # GET /microposts.json
   def index
-    @microposts = Micropost.order(id: :desc).page params[:page]
+     if request.format.html?
+      @microposts = Micropost.order(id: :desc).page(params[:page])
+    else
+      @microposts = Micropost.order(id: :desc)
+    end
   end
 
   # GET /microposts/1

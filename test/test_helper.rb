@@ -12,3 +12,9 @@ end
 class ActionController::TestCase
   include Devise::TestHelpers
 end
+
+class ActionDispatch::IntegrationTest
+  def json
+    ActiveSupport::JSON.decode @response.body
+  end
+end

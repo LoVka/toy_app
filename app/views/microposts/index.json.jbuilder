@@ -1,4 +1,6 @@
 json.array!(@microposts) do |micropost|
-  json.extract! micropost, :id, :content, :user_id
-  json.url micropost_url(micropost, format: :json)
+  json.id micropost.id
+  json.text micropost.content
+  json.created_at micropost.created_at
+  json.user micropost.user.name
 end
