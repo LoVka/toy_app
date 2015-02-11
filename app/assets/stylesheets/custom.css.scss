@@ -15,15 +15,25 @@ $light-gray: #777;
 /* universal */
 
 html {
-  overflow-y: scroll;
+  
   height: 100%;
-  min-height:100%
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  padding-top: 60px;
+  padding-top: 50px;
   height: 100%;
-  min-height:100%
+  margin: 0;
+
+}
+
+.wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 0 -50px 0; 
+    padding: 0;
 }
 
 section {
@@ -90,10 +100,11 @@ p {
 /* footer */
 
 footer {
-  margin-top: 45px;
-  padding-top: 5px;
   border-top: 1px solid #696969;
   color: $light-gray;
+  height: 50px;
+  margin: 0;
+  padding: 0;
   a {
     color: #555;
     &:hover {
@@ -101,6 +112,7 @@ footer {
     }
   }
 }
+
 
 /* miscellaneous */
 
