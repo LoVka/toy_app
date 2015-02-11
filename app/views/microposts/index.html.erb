@@ -39,6 +39,7 @@
 
 <%= link_to 'New Micropost', new_micropost_path %>
 
-<p> Only registered users can post messages. You can
-<%= link_to'Sing up', new_user_registration_path %>  if you do not have an account or <%= link_to 'Log in', new_user_session_path %> an your account.</p>
-
+<% if !user_signed_in? %>
+  <p> Only registered users can post messages. You can
+  <%= link_to'Sing up', new_user_registration_path %>  if you do not have an account or <%= link_to 'Log in', new_user_session_path %> an your account.</p>
+<% end %>
