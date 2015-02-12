@@ -2,5 +2,10 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @micropost %> |
-<%= link_to 'Back', microposts_path %>
+<div class="show">
+  <%= render 'micpost' %>
+
+  <%= link_to 'Back', microposts_path, :class => "btn btn-default" %>
+
+  <%= link_to 'Show', @micropost, :class => "btn btn-primary"   %>
+</div>

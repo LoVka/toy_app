@@ -1,14 +1,16 @@
-<p>
-  <strong>Content:</strong>
-  <%= @micropost.content %>
-</p>
+<div class="show">
+  <p >
+    <strong>Content:</strong>
+    <%= @micropost.content %>
+  </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @micropost.user.name %>
-</p>
+  <p >
+    <strong>User:</strong>
+    <%= @micropost.user.name %>
+  </p>
 
-<%= link_to 'Back', microposts_path %>
-<% if @micropost.user == current_user %>
-| <%= link_to 'Edit', edit_micropost_path(@micropost) %> 
-<% end %>
+  <%= link_to 'Back', microposts_path, :class => "btn btn-default" %>
+  <% if @micropost.user == current_user %>
+  <%= link_to 'Edit', edit_micropost_path(@micropost), :class => "btn btn-primary"  %> 
+  <% end %>
+</div>
