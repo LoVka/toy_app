@@ -1,12 +1,17 @@
 <div class="show">
-  <p >
+  <p>
     <strong>Content:</strong>
     <%= @micropost.content %>
   </p>
 
-  <p >
+  <p>
     <strong>User:</strong>
     <%= @micropost.user.name %>
+  </p>
+
+  <p>
+    <strong>Content created:</strong>
+    <%= @micropost.updated_at.strftime("%F %T") %>
   </p>
 
   <%= link_to 'Back', microposts_path, :class => "btn btn-default" %>
